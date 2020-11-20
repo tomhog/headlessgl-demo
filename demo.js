@@ -193,8 +193,9 @@ let runDemo = function(gl, w, h)
     let projection = glMatrix.mat4.create();
     glMatrix.mat4.perspective( projection, glMatrix.glMatrix.toRadian(60.0), w/h, 0.01, 100.0);
 
-    let rotation = glMatrix.quat.setAxisAngle(glMatrix.quat.create(), [1.0, 0.0, 0.0], glMatrix.glMatrix.toRadian(0));
-    let position = [0, -1.5, -2.0];
+    //let rotation = glMatrix.quat.setAxisAngle(glMatrix.quat.create(), [1.0, 0.0, 0.0], glMatrix.glMatrix.toRadian(90));
+    let rotation = glMatrix.quat.fromEuler(glMatrix.quat.create(), 45, 45, 45);
+    let position = [0, -0.5, -2.5];
 
     let model = glMatrix.mat4.create();
     glMatrix.mat4.fromRotationTranslation(model, rotation, position);
@@ -210,7 +211,7 @@ let runDemo = function(gl, w, h)
     // draw, the fbo is still bound so will be our render target
     //
     gl.enable(gl.DEPTH_TEST);
-    gl.disable(gl.CULL_FACE);
+    //gl.disable(gl.CULL_FACE);
 
     gl.viewport(0, 0, w, h);
 
@@ -227,6 +228,12 @@ let runDemo = function(gl, w, h)
     checkError("after uniform apply");
 
     gl.drawElements(gl.TRIANGLES, indicies.length, gl.UNSIGNED_SHORT, 0);
+
+    // to aid debugging clear the top left corner
+    gl.enable(gl.SCISSOR_TEST);
+    gl.scissor(0, h-10, 10, 10);
+    gl.clearColor(1, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     checkError("after draw");
 }

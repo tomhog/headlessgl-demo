@@ -4,7 +4,8 @@
   "description": "mimimal headless gl demo of vm issue",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "bundle": "browserify browser.js -o webbundle.js"
   },
   "repository": {
     "type": "git",
