@@ -1,0 +1,24 @@
+{
+  "name": "headlessgl-demo",
+  "version": "1.0.0",
+  "description": "mimimal headless gl demo of vm issue",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhog/headlessgl-demo.git"
+  },
+  "author": "tomhog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomhog/headlessgl-demo/issues"
+  },
+  "homepage": "https://github.com/tomhog/headlessgl-demo#readme",
+  "dependencies": {
+    "gl": "^4.8.0",
+    "gl-matrix": "^3.3.0",
+    "sharp": "^0.26.3"
+  }
+}
